@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonny's Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Smooth scroll to sections
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+    <style>
+        /* Custom animations */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Enhanced button hover effect */
+        .btn-hover:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            z-index: 50;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-gray-800 shadow-md fixed w-full z-10">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <h1 class="text-2xl font-bold text-yellow-500">Sonny's Portfolio</h1>
+            <ul class="flex space-x-6">
+                <li><a href="#home" onclick="scrollToSection('home'); event.preventDefault();" class="hover:text-yellow-500">Home</a></li>
+                <li><a href="#about" onclick="scrollToSection('about'); event.preventDefault();" class="hover:text-yellow-500">About</a></li>
+                <li><a href="#services" onclick="scrollToSection('services'); event.preventDefault();" class="hover:text-yellow-500">Services</a></li>
+                <li><a href="#previous-employment" onclick="scrollToSection('previous-employment'); event.preventDefault();" class="hover:text-yellow-500">Portfolio</a></li>
+                <li><a href="#contact" onclick="scrollToSection('contact'); event.preventDefault();" class="hover:text-yellow-500">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="h-screen flex items-center justify-center bg-yellow-500 text-gray-900">
+        <div class="text-center fade-in">
+            <img src="sonny.png" alt="Sonny's Photo" class="mx-auto mb-6 rounded-full shadow-2xl w-84 h-84">
+            <h2 class="text-6xl font-extrabold mt-6">Hi I'm</h2>
+            <h3 class="text-6xl font-extrabold text-gray-900 mt-2">ROSANNO LUMUBOS</h3>
+            <p class="mt-4 text-2xl font-bold text-white">Your Virtual Assistant or Tech Support</p>
+            <p class="mt-2 text-xl font-semibold text-black bg-white px-4 py-2 inline-block rounded-lg">" Aka Sonny "</p>
+            <button onclick="scrollToSection('about')" class="mt-6 px-6 py-3 bg-gray-900 text-yellow-500 rounded-lg shadow-md hover:bg-gray-700 btn-hover animate-bounce" style="animation-duration: 2s;">
+                About Me
+            </button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <!-- Image Section -->
+            <div class="md:w-1/2 flex justify-center">
+                <img src="sonnycurl.png" alt="Sonny's Photo" class="rounded-lg shadow-2xl w-1/2 max-w-sm h-auto">
+            </div>
+            <!-- Information Section -->
+            <div class="md:w-1/2 mt-8 md:mt-0 text-center md:text-left">
+                <h2 class="text-5xl font-extrabold text-yellow-500">
+                    <span class="text-gray-200">A</span>
+                    <span class="text-yellow-500">B</span>
+                    <span class="text-gray-200">O</span>
+                    <span class="text-yellow-500">U</span>
+                    <span class="text-gray-200">T</span>
+                    <span class="text-gray-200"> </span>
+                    <span class="text-gray-200">&nbsp;</span>
+                    <span class="text-gray-200">M</span>
+                    <span class="text-yellow-500">E</span>
+                </h2>
+                <p class="mt-4 text-gray-400">
+                    Hello! I'm Rosanno "Sonny" Lumubos, a passionate professional with over 6 years of experience in the IT industry. 
+                    My expertise spans across Windows Server Administration, Network Administration, IT Consulting, Graphic Design, Web Development, Back-End Development, and API Frameworks. 
+                    Recently, I have embarked on an exciting journey to become a Virtual Assistant, combining my technical skills with my dream of working from home.
+                </p>
+                <p class="mt-4 text-gray-400">
+                    As a Virtual Assistant, I aim to provide exceptional support to clients by leveraging my diverse skill set and problem-solving abilities. 
+                    I am committed to delivering high-quality results, whether it's managing technical tasks, designing creative solutions, or assisting with administrative needs. 
+                    My goal is to help businesses thrive while achieving a fulfilling work-life balance.
+                </p>
+                <p class="mt-4 text-gray-400">
+                    If you're looking for a reliable and skilled Virtual Assistant who can bring technical expertise and creativity to the table, I would love to collaborate with you. 
+                    Let's work together to turn your ideas into reality and achieve your goals efficiently.
+                </p>
+                <!-- Icons Section -->
+                <div class="mt-6 flex justify-center md:justify-start space-x-4">
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="text-gray-700 hover:text-gray-600">
+                        <img src="https://img.icons8.com/color/48/000000/html-5.png" alt="HTML5 Icon" class="w-8 h-8">
+                    </a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" class="text-gray-700 hover:text-gray-600">
+                        <img src="https://img.icons8.com/color/48/000000/css3.png" alt="CSS3 Icon" class="w-8 h-8">
+                    </a>
+                    <a href="https://tailwindcss.com/" target="_blank" class="text-gray-700 hover:text-gray-600">
+                        <img src="https://img.icons8.com/color/48/000000/tailwindcss.png" alt="Tailwind CSS Icon" class="w-8 h-8">
+                    </a>
+                    <a href="https://www.php.net/" target="_blank" class="text-gray-700 hover:text-gray-600">
+                        <img src="https://img.icons8.com/officel/48/000000/php-logo.png" alt="PHP Icon" class="w-8 h-8">
+                    </a>
+                    <a href="https://www.mysql.com/" target="_blank" class="text-gray-700 hover:text-gray-600">
+                        <img src="https://img.icons8.com/color/48/000000/mysql-logo.png" alt="MySQL Icon" class="w-8 h-8">
+                    </a>
+                    <a href="https://azure.microsoft.com/" target="_blank" class="text-gray-700 hover:text-gray-600">
+                        <img src="https://img.icons8.com/color/48/000000/azure-1.png" alt="Azure Icon" class="w-8 h-8">
+                    </a>
+                    <a href="https://aws.amazon.com/" target="_blank" class="text-gray-700 hover:text-gray-600"></a>
+                        <img src="https://img.icons8.com/color/48/000000/amazon-web-services.png" alt="AWS Icon" class="w-8 h-8">
+                    </a>
+                    <a href="https://www.hostinger.com/" target="_blank" class="text-gray-700 hover:text-gray-600">
+                        <img src="https://img.icons8.com/color/48/000000/domain.png" alt="Hostinger Icon" class="w-8 h-8">
+                    </a>
+                    <a href="https://www.pfsense.org/" target="_blank" class="text-gray-700 hover:text-gray-600">
+                        <img src="https://www.pfsense.org/images/pfsense-logo.png" alt="Pfsense Icon" class="w-8 h-8">
+                    </a>
+                    <a href="https://www.adobe.com/products/photoshop.html" target="_blank" class="text-gray-700 hover:text-gray-600">
+                        <img src="https://img.icons8.com/color/48/000000/adobe-photoshop.png" alt="Photoshop Icon" class="w-8 h-8">
+                    </a>
+                    <a href="https://www.canva.com/" target="_blank" class="text-gray-700 hover:text-gray-600">
+                        <img src="https://img.icons8.com/color/48/000000/canva.png" alt="Canva Icon" class="w-8 h-8">
+                    </a>
+                   
+                </div>
+                <!-- Contact Me Button -->
+                <div class="mt-6 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                    <a href="rosanno.lumubos.pdf" download class="px-6 py-3 bg-yellow-500 text-white font-bold rounded-lg shadow-md hover:bg-yellow-600 btn-hover flex items-center space-x-2">
+                        <img src="https://img.icons8.com/ios-filled/50/ffffff/resume.png" alt="Resume Icon" class="w-6 h-6">
+                        <span>Download Resume</span>
+                    </a>
+                    <button onclick="scrollToSection('contact')" class="px-6 py-3 bg-gray-900 text-yellow-500 font-bold rounded-lg shadow-md hover:bg-gray-700 btn-hover">
+                        Contact Me
+                    </button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-900">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-yellow-500">Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                <div class="p-6 bg-yellow-500 rounded-lg shadow-md hover:shadow-lg hover:bg-yellow-400">
+                    <img src="https://img.icons8.com/ios-filled/50/4a4a4a/web-design.png" alt="Web Development Icon" class="mx-auto mb-4">
+                    <h3 class="text-xl font-bold text-gray-900">Web Development</h3>
+                    <p class="mt-2 text-gray-800">Building responsive and modern websites.</p>
+                </div>
+                <div class="p-6 bg-yellow-500 rounded-lg shadow-md hover:shadow-lg hover:bg-yellow-400">
+                    <img src="https://img.icons8.com/ios-filled/50/4a4a4a/customer-support.png" alt="Male Tech Support Icon with Headset and Mic" class="mx-auto mb-4">
+                    <h3 class="text-xl font-bold text-gray-900">Tech Support</h3>
+                    <p class="mt-2 text-gray-800">Providing reliable technical assistance and solutions.</p>
+                </div>
+                <div class="p-6 bg-yellow-500 rounded-lg shadow-md hover:shadow-lg hover:bg-yellow-400">
+                    <img src="https://img.icons8.com/ios-filled/50/4a4a4a/consultation.png" alt="Consulting Icon" class="mx-auto mb-4">
+                    <h3 class="text-xl font-bold text-gray-900">Virtual Assistant</h3>
+                    <p class="mt-2 text-gray-800">Assisting with administrative tasks, scheduling, and technical support.</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Previous Employment -->
+<section id="previous-employment" class="py-20 bg-gray-800">
+    <div class="container mx-auto text-center relative">
+        <h2 class="text-3xl font-bold text-yellow-500">Previous Employment</h2>
+        <div class="mt-8 flex items-center justify-center">
+            <!-- Left Button -->
+            <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-900 text-yellow-500 p-4 rounded-full shadow-md hover:bg-gray-700 z-10" onclick="scrollLeft()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+
+            <!-- Scrollable Container -->
+            <div class="flex space-x-6 overflow-x-scroll scrollbar-hide snap-x snap-mandatory items-center justify-center w-full px-16">
+                <!-- Employment 1 -->
+                <div class="flex-shrink-0 w-96 bg-gray-900 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700 snap-center">
+                    <img src="accenture.webp" alt="Accenture Philippines" class="rounded-t-lg w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-2xl font-bold text-white">Accenture Philippines</h3>
+                        <p class="text-gray-400 mt-2">App/Cloud Analyst</p>
+                    </div>
+                </div>
+                <!-- Employment 2 -->
+                <div class="flex-shrink-0 w-96 bg-gray-900 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700 snap-center">
+                    <img src="deltap.jpg" alt="Delta P, Inc. Power Plant" class="rounded-t-lg w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-2xl font-bold text-white">Delta P, Inc. Power Plant</h3>
+                        <p class="text-gray-400 mt-2">IT Consultant</p>
+                    </div>
+                </div>
+                <!-- Employment 3 -->
+                <div class="flex-shrink-0 w-96 bg-gray-900 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700 snap-center">
+                    <img src="sunlighthotelsandresorts.jpg" alt="Sunlight Hotels & Resorts" class="rounded-t-lg w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-2xl font-bold text-white">Sunlight Hotels & Resorts</h3>
+                        <p class="text-gray-400 mt-2">IT Supervisor</p>
+                    </div>
+                </div>
+                <!-- Employment 4 -->
+                <div class="flex-shrink-0 w-96 bg-gray-900 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700 snap-center">
+                    <img src="sheridan.jpg" alt="Sheridan" class="rounded-t-lg w-full h-64 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-2xl font-bold text-white">Sheridan</h3>
+                        <p class="text-gray-400 mt-2">IT Assistant</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Button -->
+            <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-900 text-yellow-500 p-4 rounded-full shadow-md hover:bg-gray-700 z-10" onclick="scrollRight()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>
+                      
+
+                <script>
+                    function scrollLeft() {
+                        const container = document.querySelector('.overflow-x-scroll');
+                        if (container) {
+                            container.scrollBy({ left: -400, behavior: 'smooth' });
+                        }
+                    }
+                    
+                    function scrollRight() {
+                        const container = document.querySelector('.overflow-x-scroll');
+                        if (container) {
+                            container.scrollBy({ left: 400, behavior: 'smooth' });
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* Hide scrollbar for the slider */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+    </style>
+
+    <!-- Portfolio Section -->
+    <section id="Projects and Clients" class="py-20 bg-gray-800">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-yellow-500">Projects and Clients</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                <div class="p-6 bg-gray-900 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700">
+                    <img src="kiefers.jpg" alt="Kiefer's Delivery App" class="rounded-lg">
+                    <h3 class="mt-4 text-xl font-bold text-yellow-400">Kiefer's Delivery App</h3>
+                    <p class="text-gray-400 mt-2">Backend Developer</p>
+                </div>
+                <div class="p-6 bg-gray-900 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700">
+                    <img src="tara.jpg" alt="Mobile Phone Delivery App" class="rounded-lg">
+                    <h3 class="mt-4 text-xl font-bold text-yellow-400">Tara Rides</h3>
+                    <p class="text-gray-400 mt-2">Backend Developer</p>
+                </div>
+                              <div class="p-6 bg-gray-900 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700">
+                    <img src="food.png" alt="Food Ohh" class="rounded-lg">
+                    <h3 class="mt-4 text-xl font-bold text-yellow-400">Food Ohh</h3>
+                    <p class="text-gray-400 mt-2">Backend Developer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-900">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold text-yellow-500">Contact</h2>
+            <p class="mt-4 text-gray-400">Feel free to reach out to me for any inquiries or collaborations.</p>
+            <form class="mt-8 space-y-4">
+                <input type="text" placeholder="Your Name" class="w-full px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <input type="email" placeholder="Your Email" class="w-full px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                <textarea placeholder="Your Message" class="w-full px-4 py-2 border border-gray-700 rounded-lg bg-gray-800 text-gray-200 focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+                <button type="submit" class="px-6 py-3 bg-yellow-500 text-gray-900 rounded-lg shadow-md hover:bg-yellow-600 btn-hover">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" onclick="scrollToSection('home')" class="px-4 py-2 bg-yellow-500 text-gray-900 rounded-full shadow-md hover:bg-yellow-600 btn-hover">
+        ↑ Top
+    </button>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-6">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-400">&copy; 2023 Sonny's Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Show "Back to Top" button when scrolling
+        window.addEventListener('scroll', () => {
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        
+    </script>
+
+</body>
+</html>
