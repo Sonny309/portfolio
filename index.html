@@ -48,7 +48,12 @@
     <nav class="bg-gray-800 shadow-md fixed w-full z-10">
         <div class="container mx-auto flex justify-between items-center py-4 px-6">
             <h1 class="text-2xl font-bold text-yellow-500">Sonny's Portfolio</h1>
-            <ul class="flex space-x-6">
+            <button id="menuToggle" class="text-yellow-500 md:hidden focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+            <ul id="menu" class="hidden md:flex space-x-6">
                 <li><a href="#home" onclick="scrollToSection('home'); event.preventDefault();" class="hover:text-yellow-500">Home</a></li>
                 <li><a href="#about" onclick="scrollToSection('about'); event.preventDefault();" class="hover:text-yellow-500">About</a></li>
                 <li><a href="#services" onclick="scrollToSection('services'); event.preventDefault();" class="hover:text-yellow-500">Services</a></li>
@@ -56,18 +61,34 @@
                 <li><a href="#contact" onclick="scrollToSection('contact'); event.preventDefault();" class="hover:text-yellow-500">Contact</a></li>
             </ul>
         </div>
+        <ul id="mobileMenu" class="md:hidden bg-gray-800 space-y-4 py-4 px-6 hidden">
+            <li><a href="#home" onclick="scrollToSection('home'); event.preventDefault();" class="block text-yellow-500 hover:text-yellow-400">Home</a></li>
+            <li><a href="#about" onclick="scrollToSection('about'); event.preventDefault();" class="block text-yellow-500 hover:text-yellow-400">About</a></li>
+            <li><a href="#services" onclick="scrollToSection('services'); event.preventDefault();" class="block text-yellow-500 hover:text-yellow-400">Services</a></li>
+            <li><a href="#previous-employment" onclick="scrollToSection('previous-employment'); event.preventDefault();" class="block text-yellow-500 hover:text-yellow-400">Portfolio</a></li>
+            <li><a href="#contact" onclick="scrollToSection('contact'); event.preventDefault();" class="block text-yellow-500 hover:text-yellow-400">Contact</a></li>
+        </ul>
     </nav>
 
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
     <!-- Hero Section -->
-    <section id="home" class="h-screen flex items-center justify-center bg-yellow-500 text-gray-900">
+    <section id="home" class="h-screen flex items-center justify-center bg-yellow-500 text-gray-900 px-4 sm:px-6 lg:px-8">
         <div class="text-center fade-in">
-            <img src="sonny.png" alt="Sonny's Photo" class="mx-auto mb-6 rounded-full shadow-2xl w-60 h-62">
-            <h2 class="text-6xl font-extrabold mt-6">Hi I'm</h2>
-            <h3 class="text-6xl font-extrabold text-gray-900 mt-2">ROSANNO LUMUBOS</h3>
-            <p class="mt-4 text-2xl font-bold text-white">Your Virtual Assistant or Tech Support</p>
-            <p class="mt-2 text-xl font-semibold text-black bg-white px-4 py-2 inline-block rounded-lg">" Aka Sonny "</p>
-            <button onclick="scrollToSection('about')" class="mt-6 px-6 py-3 bg-gray-900 text-yellow-500 rounded-lg shadow-md hover:bg-gray-700 btn-hover animate-bounce" style="animation-duration: 2s;">
-                About Me
+            <img src="sonny.png" alt="Sonny's Photo" class="mx-auto mb-6 rounded-full shadow-2xl w-40 h-40 sm:w-48 sm:h-48 md:w-60 md:h-60">
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mt-6">Hi I'm</h2>
+            <h3 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 mt-2">ROSANNO LUMUBOS</h3>
+            <p class="mt-4 text-lg sm:text-xl md:text-2xl font-bold text-white">Your Virtual Assistant or Tech Support</p>
+            <p class="mt-2 text-base sm:text-lg md:text-xl font-semibold text-black bg-white px-4 py-2 inline-block rounded-lg">" Aka Sonny "</p>
+            <button onclick="scrollToSection('about')" class="mt-6 px-4 sm:px-6 py-2 sm:py-3 bg-gray-900 text-yellow-500 rounded-lg shadow-md hover:bg-gray-700 btn-hover animate-bounce" style="animation-duration: 2s;">About Me</button>
+
             </button>
         </div>
     </section>
@@ -230,6 +251,21 @@
         .scrollbar-hide {
             -ms-overflow-style: none; /* IE and Edge */
             scrollbar-width: none; /* Firefox */
+        }
+
+        /* Ensure horizontal scrolling and responsive images */
+        .flex-wrap {
+            flex-wrap: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .flex-wrap {
+                overflow-x: auto;
+                display: flex;
+            }
+            .flex-shrink-0 {
+                flex: 0 0 auto;
+            }
         }
         </style>
 
