@@ -82,10 +82,10 @@
     <!-- Hero Section -->
     <section id="home" class="h-screen flex items-center justify-center bg-yellow-500 text-gray-900 px-4 sm:px-6 lg:px-8">
         <div class="text-center fade-in">
-            <img src="sonny.png" alt="Sonny's Photo" class="mx-auto mb-6 rounded-full shadow-2xl shadow-gray-700 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80">
+            <img src="sonny.png" alt="Sonny's Photo" class="mx-auto mb-6 rounded-full shadow-2xl shadow-gray-700 shadow-inner shadow-gray-900 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 shadow-lg">
             <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mt-6">Hi I'm</h2>
             <h3 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 mt-2">ROSANNO LUMUBOS</h3>
-            <p class="mt-4 text-lg sm:text-xl md:text-2xl font-bold text-white">Your Virtual Assistant or Tech Support</p>
+            <p class="mt-4 text-lg sm:text-xl md:text-2xl font-bold text-white shadow-lg">Your Virtual Assistant & Tech Support</p>
             <p class="mt-2 text-base sm:text-lg md:text-xl font-semibold text-black bg-white px-4 py-2 inline-block rounded-lg">" Aka Sonny "</p>
             <button onclick="scrollToSection('about')" class="mt-6 px-4 sm:px-6 py-2 sm:py-3 bg-gray-900 text-yellow-500 rounded-lg shadow-md hover:bg-gray-700 btn-hover animate-bounce" style="animation-duration: 2s;">About Me</button>
         </div>
@@ -184,24 +184,38 @@
             <h2 class="text-3xl font-bold text-yellow-500">Services</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
                 <div class="p-6 bg-yellow-500 rounded-lg shadow-md hover:shadow-lg hover:bg-yellow-400">
-                    <img src="https://img.icons8.com/ios-filled/50/4a4a4a/web-design.png" alt="Web Development Icon" class="mx-auto mb-4">
+                    <img src="https://img.icons8.com/ios-filled/50/4a4a4a/web-design.png" alt="Web Development Icon" class="mx-auto mb-4 animate-icon">
                     <h3 class="text-xl font-bold text-gray-900">Web Development</h3>
                     <p class="mt-2 text-gray-800">Building responsive and modern websites.</p>
                 </div>
                 <div class="p-6 bg-yellow-500 rounded-lg shadow-md hover:shadow-lg hover:bg-yellow-400">
-                    <img src="https://img.icons8.com/ios-filled/50/4a4a4a/customer-support.png" alt="Male Tech Support Icon with Headset and Mic" class="mx-auto mb-4">
+                    <img src="https://img.icons8.com/ios-filled/50/4a4a4a/customer-support.png" alt="Male Tech Support Icon with Headset and Mic" class="mx-auto mb-4 animate-icon">
                     <h3 class="text-xl font-bold text-gray-900">Tech Support</h3>
                     <p class="mt-2 text-gray-800">Providing reliable technical assistance and solutions.</p>
                 </div>
                 <div class="p-6 bg-yellow-500 rounded-lg shadow-md hover:shadow-lg hover:bg-yellow-400">
-                    <img src="https://img.icons8.com/ios-filled/50/4a4a4a/consultation.png" alt="Consulting Icon" class="mx-auto mb-4">
+                    <img src="https://img.icons8.com/ios-filled/50/4a4a4a/consultation.png" alt="Consulting Icon" class="mx-auto mb-4 animate-icon">
                     <h3 class="text-xl font-bold text-gray-900">Virtual Assistant</h3>
                     <p class="mt-2 text-gray-800">Assisting with administrative tasks, scheduling, and technical support.</p>
-                </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <style>
+        @keyframes iconMove {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .animate-icon {
+            animation: iconMove 2s infinite;
+        }
+    </style>
 
 <!-- Previous Employment -->
 <section id="previous-employment" class="py-20 bg-gray-800">
@@ -232,6 +246,7 @@
                 <p class="text-gray-400 mt-2">IT Supervisor</p>
             </div>
             </div>
+            
             <!-- Employment 4 -->
             <div class="flex-shrink-0 w-72 md:w-1/4 bg-gray-900 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700 snap-center">
             <img src="sheridan.jpg" alt="Sheridan" class="rounded-t-lg w-full h-auto object-cover">
@@ -350,13 +365,7 @@
         ↑ Top
     </button>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 py-6">
-        <div class="container mx-auto text-center">
-            <p class="text-gray-400">&copy; 2023 Sonny's Portfolio. All rights reserved.</p>
-        </div>
-    </footer>
-
+   
     <script>
         // Show "Back to Top" button when scrolling
         window.addEventListener('scroll', () => {
