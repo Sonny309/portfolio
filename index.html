@@ -1,383 +1,485 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sonny's Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Smooth scroll to sections
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
-    <style>
-        /* Custom animations */
-        .fade-in {
-            animation: fadeIn 1s ease-in-out;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rosanno "Sonny" Lumubos, IT Supervisor</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#0B0F16',
+          panel: '#121927',
+          panel2: '#182233',
+          line: '#2A3547',
+          gold: '#F5B942',
+          golddark: '#D89B1F',
+          cyan: '#37E6C4',
+          muted: '#AEB9CB',
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      }
+    }
+  }
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #0B0F16; font-size: 16px; }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
 
-        /* Enhanced button hover effect */
-        .btn-hover:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease-in-out;
-        }
+  .noise-bg {
+    background-image:
+      radial-gradient(circle at 15% 15%, rgba(245,185,66,0.07), transparent 40%),
+      radial-gradient(circle at 85% 5%, rgba(55,230,196,0.06), transparent 35%);
+  }
 
-        /* Back to Top Button */
-        #backToTop {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: none;
-            z-index: 50;
-        }
-    </style>
+  .fade-up { animation: fadeUp .7s ease-out both; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .btn-hover { transition: transform .2s ease, box-shadow .2s ease; }
+  .btn-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(245,185,66,0.4); }
+
+  .card-hover { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+  .card-hover:hover { transform: translateY(-3px); border-color: #F5B942; box-shadow: 0 16px 36px -18px rgba(0,0,0,0.65); }
+
+  .terminal { background: linear-gradient(180deg,#141D2B,#0F1621); border:1px solid #2A3547; }
+  .terminal-dot { width:10px; height:10px; border-radius:9999px; }
+  .caret {
+    display:inline-block; width:8px; height:1.1em; background:#F5B942;
+    margin-left:2px; vertical-align:text-bottom;
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .timeline-line { background: linear-gradient(180deg, transparent, #2A3547 6%, #2A3547 94%, transparent); }
+  .timeline-dot { box-shadow: 0 0 0 4px #0B0F16, 0 0 0 6px currentColor; }
+
+  #backToTop { position:fixed; bottom:24px; right:24px; display:none; z-index:50; }
+
+  .pill { border:1px solid #2A3547; background:#121927; transition: all .2s ease; }
+  .pill:hover { border-color:#37E6C4; background:#182233; }
+
+  .skill-chip { border:1px solid #2A3547; background:#121927; transition: all .2s ease; }
+  .skill-chip:hover { border-color:#37E6C4; background:#182233; transform: translateY(-2px); }
+
+  input:focus, textarea:focus, button:focus-visible, a:focus-visible {
+    outline: 2px solid #37E6C4; outline-offset: 2px;
+  }
+
+  .present-badge {
+    background: linear-gradient(90deg, rgba(55,230,196,0.18), rgba(55,230,196,0.05));
+  }
+</style>
 </head>
-<body class="bg-gray-900 text-gray-200 font-sans">
+<body class="bg-ink text-slate-200 font-body antialiased leading-relaxed">
 
-    <!-- Navbar -->
-    <nav class="bg-gray-800 shadow-md fixed w-full z-10">
-        <div class="container mx-auto flex justify-between items-center py-4 px-6">
-            <h1 class="text-2xl font-bold text-yellow-500">Sonny's Portfolio</h1>
-            <button id="menuToggle" class="text-yellow-500 md:hidden focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-            <ul id="menu" class="hidden md:flex space-x-6">
-                <li><a href="#home" onclick="scrollToSection('home'); event.preventDefault();" class="hover:text-yellow-500">Home</a></li>
-                <li><a href="#about" onclick="scrollToSection('about'); event.preventDefault();" class="hover:text-yellow-500">About</a></li>
-                <li><a href="#services" onclick="scrollToSection('services'); event.preventDefault();" class="hover:text-yellow-500">Services</a></li>
-                <li><a href="#previous-employment" onclick="scrollToSection('previous-employment'); event.preventDefault();" class="hover:text-yellow-500">Portfolio</a></li>
-                <li><a href="#contact" onclick="scrollToSection('contact'); event.preventDefault();" class="hover:text-yellow-500">Contact</a></li>
-            </ul>
-        </div>
-        <ul id="mobileMenu" class="md:hidden bg-gray-800 space-y-4 py-4 px-6 hidden">
-            <li><a href="#home" onclick="scrollToSection('home'); event.preventDefault();" class="block text-yellow-500 hover:text-yellow-400">Home</a></li>
-            <li><a href="#about" onclick="scrollToSection('about'); event.preventDefault();" class="block text-yellow-500 hover:text-yellow-400">About</a></li>
-            <li><a href="#services" onclick="scrollToSection('services'); event.preventDefault();" class="block text-yellow-500 hover:text-yellow-400">Services</a></li>
-            <li><a href="#previous-employment" onclick="scrollToSection('previous-employment'); event.preventDefault();" class="block text-yellow-500 hover:text-yellow-400">Portfolio</a></li>
-            <li><a href="#contact" onclick="scrollToSection('contact'); event.preventDefault();" class="block text-yellow-500 hover:text-yellow-400">Contact</a></li>
-        </ul>
-    </nav>
-
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
-
-    <!-- Hero Section -->
-    <section id="home" class="h-screen flex items-center justify-center bg-yellow-500 text-gray-900 px-4 sm:px-6 lg:px-8">
-        <div class="text-center fade-in">
-            <img src="sonny.png" alt="Sonny's Photo" class="mx-auto mb-6 rounded-full shadow-2xl shadow-gray-700 shadow-inner shadow-gray-900 w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 shadow-lg">
-            <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mt-6">Hi I'm</h2>
-            <h3 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 mt-2">ROSANNO LUMUBOS</h3>
-            <p class="mt-4 text-lg sm:text-xl md:text-2xl font-bold text-white shadow-lg">Your Virtual Assistant & Tech Support</p>
-            <p class="mt-2 text-base sm:text-lg md:text-xl font-semibold text-black bg-white px-4 py-2 inline-block rounded-lg">" Aka Sonny "</p>
-            <button onclick="scrollToSection('about')" class="mt-6 px-4 sm:px-6 py-2 sm:py-3 bg-gray-900 text-yellow-500 rounded-lg shadow-md hover:bg-gray-700 btn-hover animate-bounce" style="animation-duration: 2s;">About Me</button>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-gray-800">
-        <div class="container mx-auto flex flex-col md:flex-row items-center">
-            <!-- Im</div>age Section -->
-            <div class="md:w-1/2 flex justify-center">
-                <img src="sonnycurl.png" alt="Sonny's Photo" class="rounded-lg shadow-2xl w-1/2 max-w-sm h-auto">
-            </div>
-            <!-- Information Section -->
-            <div class="md:w-1/2 mt-8 md:mt-0 text-center md:text-left">
-                <h2 class="text-5xl font-extrabold text-yellow-500">
-                    <span class="text-gr</h2>ay-200">A</span>
-                    <span class="text-yellow-500">B</span>
-                    <span class="text-gray-200">O</span>
-                    <span class="text-yellow-500">U</span>
-                    <span class="text-gray-200">T</span>
-                    <span class="text-gray-200"> </span>
-                    <span class="text-gray-200">&nbsp;</span>
-                    <span class="text-gray-200">M</span>
-                    <span class="text-yellow-500">E</span>
-                </h2>
-                <p class="mt-4 text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed"></p>
-                    Hello! I'm Rosanno Villaceran Lumubos but you can call me Sonny, a passionate professional with over 6 years of experience in the IT industry. 
-                    My expertise spans across Windows Server Administration, Network Administration, IT Consulting, Graphic Design, Web Development, Back-End Development, and API Frameworks. 
-                    Recently, I have embarked on an exciting journey to become a Virtual Assistant, combining my technical skills with my dream of working from home.
-                </p>
-                <p class="mt-4 text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed"></p>
-                    As a Virtual Assistant, I aim to provide exceptional support to clients by leveraging my diverse skill set and problem-solving abilities. 
-                    I am committed to delivering high-quality results, whether it's managing technical tasks, designing creative solutions, or assisting with administrative needs. 
-                    My goal is to help businesses thrive while achieving a fulfilling work-life balance.
-                </p>
-                <p class="mt-4 text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed"></p>
-                    If you're looking for a reliable and skilled Virtual Assistant who can bring technical expertise and creativity to the table, I would love to collaborate with you. 
-                    Let's work together to turn your ideas into reality and achieve your goals efficiently.
-                </p>
-                <!-- Icons Section -->
-                <div class="mt-6 flex flex-wrap justify-center md:justify-start space-x-4">
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="text-gray-700 hover:text-gray-600">
-                        <img src="https://img.icons8.com/color/48/000000/html-5.png" alt="HTML5 Icon" class="w-8 h-8">
-                    </a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" class="text-gray-700 hover:text-gray-600">
-                        <img src="https://img.icons8.com/color/48/000000/css3.png" alt="CSS3 Icon" class="w-8 h-8">
-                    </a>
-                    <a href="https://tailwindcss.com/" target="_blank" class="text-gray-700 hover:text-gray-600">
-                        <img src="https://img.icons8.com/color/48/000000/tailwindcss.png" alt="Tailwind CSS Icon" class="w-8 h-8">
-                    </a>
-                    <a href="https://www.php.net/" target="_blank" class="text-gray-700 hover:text-gray-600">
-                        <img src="https://img.icons8.com/officel/48/000000/php-logo.png" alt="PHP Icon" class="w-8 h-8">
-                    </a>
-                    <a href="https://www.mysql.com/" target="_blank" class="text-gray-700 hover:text-gray-600">
-                        <img src="https://img.icons8.com/color/48/000000/mysql-logo.png" alt="MySQL Icon" class="w-8 h-8">
-                    </a>
-                    <a href="https://azure.microsoft.com/" target="_blank" class="text-gray-700 hover:text-gray-600">
-                        <img src="https://img.icons8.com/color/48/000000/azure-1.png" alt="Azure Icon" class="w-8 h-8">
-                    </a>
-                    <a href="https://aws.amazon.com/" target="_blank" class="text-gray-700 hover:text-gray-600"></a>
-                        <img src="https://img.icons8.com/color/48/000000/amazon-web-services.png" alt="AWS Ic</a>on" class="w-8 h-8">
-                    </a>
-                    <a href="https://www.hostinger.com/" target="_blank" class="text-gray-700 hover:text-gray-600">
-                        <img src="https://img.icons8.com/color/48/000000/domain.png" alt="Hostinger Icon" class="w-8 h-8">
-                    </a>
-                    <a href="https://www.pfsense.org/" target="_blank" class="text-gray-700 hover:text-gray-600">
-                        <img src="https://www.pfsense.org/images/pfsense-logo.png" alt="Pfsense Icon" class="w-8 h-8">
-                    </a>
-                    <a href="https://www.adobe.com/products/photoshop.html" target="_blank" class="text-gray-700 hover:text-gray-600">
-                        <img src="https://img.icons8.com/color/48/000000/adobe-photoshop.png" alt="Photoshop Icon" class="w-8 h-8">
-                    </a>
-                    <a href="https://www.canva.com/" target="_blank" class="text-gray-700 hover:text-gray-600">
-                        <img src="https://img.icons8.com/color/48/000000/canva.png" alt="Canva Icon" class="w-8 h-8">
-                    </a>
-                   
-                </div>
-                <!-- Contact Me Button -->
-                <div class="mt-6 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                    <a href="rosanno.lumubos.pdf" download class="px-6 py-3 bg-yellow-500 text-white font-bold rounded-lg shadow-md hover:bg-yellow-600 btn-hover flex items-center space-x-2">
-                        <img src="https://img.icons8.com/ios-filled/50/ffffff/resume.png" alt="Resume Icon" class="w-6 h-6">
-                        <span>Download Resume</span>
-                    </a>
-                    <button onclick="scrollToSection('contact')" class="px-6 py-3 bg-gray-900 text-yellow-500 font-bold rounded-lg shadow-md hover:bg-gray-700 btn-hover flex items-center space-x-2">
-                        <img src="https://img.icons8.com/ios-filled/50/ffffff/contacts.png" alt="Contact Icon" class="w-6 h-6">
-                        <span>Contact Me</span>
-                    </button>
-                </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-gray-900">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold text-yellow-500">Services</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-                <div class="p-6 bg-yellow-500 rounded-lg shadow-md hover:shadow-lg hover:bg-yellow-400">
-                    <img src="https://img.icons8.com/ios-filled/50/4a4a4a/web-design.png" alt="Web Development Icon" class="mx-auto mb-4 animate-icon">
-                    <h3 class="text-xl font-bold text-gray-900">Web Development</h3>
-                    <p class="mt-2 text-gray-800">Building responsive and modern websites.</p>
-                </div>
-                <div class="p-6 bg-yellow-500 rounded-lg shadow-md hover:shadow-lg hover:bg-yellow-400">
-                    <img src="https://img.icons8.com/ios-filled/50/4a4a4a/customer-support.png" alt="Male Tech Support Icon with Headset and Mic" class="mx-auto mb-4 animate-icon">
-                    <h3 class="text-xl font-bold text-gray-900">Tech Support</h3>
-                    <p class="mt-2 text-gray-800">Providing reliable technical assistance and solutions.</p>
-                </div>
-                <div class="p-6 bg-yellow-500 rounded-lg shadow-md hover:shadow-lg hover:bg-yellow-400">
-                    <img src="https://img.icons8.com/ios-filled/50/4a4a4a/consultation.png" alt="Consulting Icon" class="mx-auto mb-4 animate-icon">
-                    <h3 class="text-xl font-bold text-gray-900">Virtual Assistant</h3>
-                    <p class="mt-2 text-gray-800">Assisting with administrative tasks, scheduling, and technical support.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <style>
-        @keyframes iconMove {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-
-        .animate-icon {
-            animation: iconMove 2s infinite;
-        }
-    </style>
-
-<!-- Previous Employment -->
-<section id="previous-employment" class="py-20 bg-gray-800">
-    <div class="container mx-auto text-center relative">
-        <h2 class="text-3xl font-bold text-yellow-500">Previous Employment</h2>
-        <div class="mt-8 flex flex-wrap md:flex-nowrap overflow-x-auto md:overflow-x-visible scrollbar-hide snap-x snap-mandatory space-x-4 px-4 md:px-16">
-            <!-- Employment 1 -->
-            <div class="flex-shrink-0 w-72 md:w-1/4 bg-gray-900 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700 snap-center">
-            <img src="accenture.webp" alt="Accenture Philippines" class="rounded-t-lg w-full h-auto object-cover">
-            <div class="p-4">
-                <h3 class="text-xl md:text-2xl font-bold text-white">Accenture Philippines</h3>
-                <p class="text-gray-400 mt-2">App/Cloud Analyst</p>
-            </div>
-            </div>
-            <!-- Employment 2 -->
-            <div class="flex-shrink-0 w-72 md:w-1/4 bg-gray-900 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700 snap-center">
-            <img src="deltap.jpg" alt="Delta P, Inc. Power Plant" class="rounded-t-lg w-full h-auto object-cover">
-            <div class="p-4">
-                <h3 class="text-xl md:text-2xl font-bold text-white">Delta P, Inc. Power Plant</h3>
-                <p class="text-gray-400 mt-2">IT Consultant</p>
-            </div>
-            </div>
-            <!-- Employment 3 -->
-            <div class="flex-shrink-0 w-72 md:w-1/4 bg-gray-900 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700 snap-center">
-            <img src="sunlighthotelsandresorts.jpg" alt="Sunlight Hotels & Resorts" class="rounded-t-lg w-full h-auto object-cover">
-            <div class="p-4">
-                <h3 class="text-xl md:text-2xl font-bold text-white">Sunlight Hotels & Resorts</h3>
-                <p class="text-gray-400 mt-2">IT Supervisor</p>
-            </div>
-            </div>
-            
-            <!-- Employment 4 -->
-            <div class="flex-shrink-0 w-72 md:w-1/4 bg-gray-900 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700 snap-center">
-            <img src="sheridan.jpg" alt="Sheridan" class="rounded-t-lg w-full h-auto object-cover">
-            <div class="p-4">
-                <h3 class="text-xl md:text-2xl font-bold text-white">Sheridan</h3>
-                <p class="text-gray-400 mt-2">IT Assistant</p>
-            </div>
-            </div>
-        </div>
-
-        <style>
-        /* Hide scrollbar for the slider */
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-        .scrollbar-hide {
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: none; /* Firefox */
-        }
-
-        /* Ensure horizontal scrolling and responsive images */
-        .flex-wrap {
-            flex-wrap: nowrap;
-        }
-
-        @media (max-width: 768px) {
-            .flex-wrap {
-                overflow-x: auto;
-                display: flex;
-            }
-            .flex-shrink-0 {
-                flex: 0 0 auto;
-            }
-        }
-        </style>
-
-    <!-- Portfolio Section -->
-    <section id="Projects and Clients" class="py-20 bg-gray-800">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold text-yellow-500">Projects and Clients</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-                <div class="p-6 bg-gray-900 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700">
-                    <img src="kiefers.jpg" alt="Kiefer's Delivery App" class="rounded-lg">
-                    <h3 class="mt-4 text-xl font-bold text-yellow-400">Kiefer's Delivery App</h3>
-                    <p class="text-gray-400 mt-2">Backend Developer</p>
-                </div>
-                <div class="p-6 bg-gray-900 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700">
-                    <img src="tara.jpg" alt="Mobile Phone Delivery App" class="rounded-lg">
-                    <h3 class="mt-4 text-xl font-bold text-yellow-400">Tara Rides</h3>
-                    <p class="text-gray-400 mt-2">Backend Developer</p>
-                </div>
-                              <div class="p-6 bg-gray-900 rounded-lg shadow-md hover:shadow-lg hover:bg-gray-700">
-                    <img src="food.png" alt="Food Ohh" class="rounded-lg">
-                    <h3 class="mt-4 text-xl font-bold text-yellow-400">Food Ohh</h3>
-                    <p class="text-gray-400 mt-2">Backend Developer</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white bg-opacity-90 relative">
-        <div class="absolute inset-x-0 top-0 -mt-20">
-            <svg class="w-full h-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"></svg>
-                <path fill="#ffffff" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,186.7C384,192,480,224,576,213.3C672,203,768,149,864,133.3C960,117,1056,139,1152,154.7C1248,171,1344,181,1392,186.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
-            </svg>
-        </div>
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold text-yellow-500">Contact</h2>
-            <p class="mt-4 text-gray-700">Feel free to reach out to me for any inquiries, collaborations, or just to say hi!</p>
-            <form class="mt-8 space-y-4 max-w-lg mx-auto" action="https://formsubmit.co/rosanno.lumubos20@gmail.com" method="POST">
-                <div class="space-y-4">
-                    <input type="text" name="name" placeholder="Your Name" class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
-                    <input type="email" name="email" placeholder="Your Email" class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" required>
-                </div>
-                <textarea name="message" placeholder="Your Message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-100 text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500" required></textarea>
-                <button type="submit" class="w-full px-6 py-3 bg-yellow-500 text-gray-900 font-bold rounded-lg shadow-md hover:bg-yellow-600 btn-hover flex items-center justify-center space-x-2">
-                    <img src="https://img.icons8.com/ios-filled/50/ffffff/send-letter.png" alt="Send Icon" class="w-5 h-5">
-                    <span>Send Message</span>
-                </button>
-                <!-- Add a hidden input for security -->
-                <input type="hidden" name="_captcha" value="false">
-            </form>
-        </div>
-    </section>
-            </form>
-            <div class="mt-8 flex justify-center space-x-6">
-                <a href="mailto:your-email@gmail.com" target="_blank" class="text-gray-700 hover:text-gray-600 transform hover:scale-125 transition-transform duration-300">
-                    <img src="https://img.icons8.com/color/64/000000/gmail-new.png" alt="Gmail Icon" class="w-12 h-12 animate-bounce" style="animation-duration: 2s;">
-                </a>
-                <a href="https://www.facebook.com/your-profile" target="_blank" class="text-gray-700 hover:text-gray-600 transform hover:scale-125 transition-transform duration-300">
-                    <img src="https://img.icons8.com/color/64/000000/facebook-new.png" alt="Facebook Icon" class="w-12 h-12 animate-spin" style="animation-duration: 3s;">
-                </a>
-                <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="text-gray-700 hover:text-gray-600 transform hover:scale-125 transition-transform duration-300">
-                    <img src="https://img.icons8.com/color/64/000000/linkedin.png" alt="LinkedIn Icon" class="w-12 h-12" style="animation: moveHorizontal 1.5s infinite alternate;">
-                </a>
-
-                <style>
-                    @keyframes moveHorizontal {
-                        from {
-                            transform: translateX(0);
-                        }
-                        to {
-                            transform: translateX(20px);
-                        }
-                    }
-                </style>
-                </a>
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- Back to Top Button -->
-    <button id="backToTop" onclick="scrollToSection('home')" class="px-4 py-2 bg-yellow-500 text-gray-900 rounded-full shadow-md hover:bg-yellow-600 btn-hover">
-        ↑ Top
+<!-- Navbar -->
+<nav class="fixed w-full z-40 backdrop-blur-md bg-ink/90 border-b border-line">
+  <div class="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
+    <a href="#home" onclick="scrollToSection('home'); event.preventDefault();" class="font-display font-bold text-lg tracking-tight text-white">
+      Sonny<span class="text-gold">.</span><span class="font-mono text-xs text-cyan align-super ml-1">it</span>
+    </a>
+    <button id="menuToggle" class="text-gold md:hidden focus:outline-none" aria-label="Toggle menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
     </button>
+    <ul id="menu" class="hidden md:flex items-center space-x-7 font-medium text-sm">
+      <li><a href="#home" onclick="scrollToSection('home'); event.preventDefault();" class="text-muted hover:text-gold transition-colors">Home</a></li>
+      <li><a href="#about" onclick="scrollToSection('about'); event.preventDefault();" class="text-muted hover:text-gold transition-colors">About</a></li>
+      <li><a href="#certifications" onclick="scrollToSection('certifications'); event.preventDefault();" class="text-muted hover:text-gold transition-colors">Certifications</a></li>
+      <li><a href="#experience" onclick="scrollToSection('experience'); event.preventDefault();" class="text-muted hover:text-gold transition-colors">Experience</a></li>
+      <li><a href="#services" onclick="scrollToSection('services'); event.preventDefault();" class="text-muted hover:text-gold transition-colors">Services</a></li>
+      <li><a href="#contact" onclick="scrollToSection('contact'); event.preventDefault();" class="px-4 py-2 rounded-lg bg-gold text-ink font-semibold hover:bg-golddark btn-hover">Contact</a></li>
+    </ul>
+  </div>
+  <ul id="mobileMenu" class="md:hidden hidden bg-panel border-t border-line space-y-1 py-4 px-6">
+    <li><a href="#home" onclick="scrollToSection('home'); event.preventDefault();" class="block py-2 text-gold">Home</a></li>
+    <li><a href="#about" onclick="scrollToSection('about'); event.preventDefault();" class="block py-2 text-gold">About</a></li>
+    <li><a href="#certifications" onclick="scrollToSection('certifications'); event.preventDefault();" class="block py-2 text-gold">Certifications</a></li>
+    <li><a href="#experience" onclick="scrollToSection('experience'); event.preventDefault();" class="block py-2 text-gold">Experience</a></li>
+    <li><a href="#services" onclick="scrollToSection('services'); event.preventDefault();" class="block py-2 text-gold">Services</a></li>
+    <li><a href="#contact" onclick="scrollToSection('contact'); event.preventDefault();" class="block py-2 text-gold">Contact</a></li>
+  </ul>
+</nav>
+<script>
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+</script>
 
-   
-    <script>
-        // Show "Back to Top" button when scrolling
-        window.addEventListener('scroll', () => {
-            const backToTop = document.getElementById('backToTop');
-            if (window.scrollY > 300) {
-                backToTop.style.display = 'block';
-            } else {
-                backToTop.style.display = 'none';
-            }
-        });
-        
-    </script>
+<!-- Hero -->
+<section id="home" class="min-h-screen flex items-center noise-bg px-6 pt-28 pb-16">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center w-full">
+    <div class="fade-up">
+      <p class="font-mono text-cyan text-sm mb-4">$ whoami --role="IT Supervisor"</p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.08]">
+        Rosanno Lumubos
+      </h1>
+      <p class="mt-3 font-display text-xl sm:text-2xl text-gold">a.k.a. Sonny</p>
+      <p class="mt-6 text-muted text-base sm:text-lg leading-relaxed max-w-lg">
+        IT professional with <span class="text-white font-semibold">9 years</span> of experience in IT roles,
+        including <span class="text-white font-semibold">6 years at the IT Supervisory level</span>,
+        specializing in network infrastructure, security systems, and IT team leadership.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        <button onclick="scrollToSection('experience')" class="px-6 py-3 rounded-lg bg-gold text-ink font-semibold btn-hover">View Experience</button>
+        <button onclick="scrollToSection('contact')" class="px-6 py-3 rounded-lg border border-line text-white font-semibold hover:border-gold btn-hover">Get in Touch</button>
+      </div>
+    </div>
+
+    <!-- Signature terminal element -->
+    <div class="terminal rounded-xl shadow-2xl overflow-hidden fade-up" style="animation-delay:.15s">
+      <div class="flex items-center gap-2 px-4 py-3 border-b border-line">
+        <span class="terminal-dot bg-[#FF5F56]"></span>
+        <span class="terminal-dot bg-[#FFBD2E]"></span>
+        <span class="terminal-dot bg-[#27C93F]"></span>
+        <span class="ml-3 font-mono text-xs text-muted">sonny@lumubos:~</span>
+      </div>
+      <div class="p-6 font-mono text-sm leading-8">
+        <p class="text-slate-300">$ cat profile.txt</p>
+        <p class="text-slate-300 pl-4 mt-1">role: <span class="text-cyan">IT Supervisor</span> @ LIME Hotel &amp; Resort, El Nido</p>
+        <p class="text-slate-300 pl-4">status: <span class="text-cyan">Present</span><span class="caret"></span></p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <span class="skill-chip px-3 py-1 rounded-full text-xs text-slate-200">Network Infrastructure</span>
+          <span class="skill-chip px-3 py-1 rounded-full text-xs text-slate-200">Firewalls</span>
+          <span class="skill-chip px-3 py-1 rounded-full text-xs text-slate-200">CCTV Systems</span>
+          <span class="skill-chip px-3 py-1 rounded-full text-xs text-slate-200">People Management</span>
+          <span class="skill-chip px-3 py-1 rounded-full text-xs text-slate-200">AWS</span>
+          <span class="skill-chip px-3 py-1 rounded-full text-xs text-slate-200">Azure</span>
+          <span class="skill-chip px-3 py-1 rounded-full text-xs text-slate-200">Oracle</span>
+          <span class="skill-chip px-3 py-1 rounded-full text-xs text-slate-200">Datadog</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="py-24 bg-panel border-t border-line">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+    <div class="flex justify-center items-center order-2 md:order-1 h-full">
+      <div class="relative w-full max-w-md">
+        <div class="absolute -inset-4 rounded-2xl bg-gradient-to-br from-gold/20 to-cyan/10 blur-xl"></div>
+        <img src="sonnycurl.png" alt="Rosanno Lumubos" class="relative rounded-2xl shadow-2xl w-full aspect-[4/5] object-cover border border-line">
+      </div>
+    </div>
+    <div class="order-1 md:order-2">
+      <p class="font-mono text-cyan text-xs uppercase tracking-widest mb-3">About</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">9 years in IT. 6 years leading teams.</h2>
+      <p class="mt-6 text-slate-300 leading-relaxed">
+        I'm Rosanno Villaceran Lumubos, known to clients and colleagues as Sonny, an IT professional with
+        <span class="text-white font-semibold">9 years of experience</span> across IT operations, including
+        <span class="text-white font-semibold">6 years at the IT Supervisory level</span>, primarily within
+        the hospitality industry.
+      </p>
+      <p class="mt-4 text-slate-300 leading-relaxed">
+        My core strength is network infrastructure and systems administration: configuring and maintaining
+        firewalls (<span class="text-white">Sophos, pfSense</span>), managing switches and network hardware
+        (<span class="text-white">Ruijie</span>), and overseeing security and communication systems including
+        CCTV, intercoms, and VOIP (<span class="text-white">Grandstream</span>) across multi-site properties.
+      </p>
+      <p class="mt-4 text-slate-300 leading-relaxed">
+        Beyond the technical side, I've built strong people management experience, leading IT teams,
+        coordinating with vendors, and maintaining clear system documentation and SOPs to keep operations
+        running smoothly. I also carry working knowledge of Windows Server administration and Microsoft Azure.
+      </p>
+
+      <p class="mt-6 text-xs font-mono text-muted uppercase tracking-widest">Also familiar with</p>
+      <div class="mt-3 flex flex-wrap gap-3">
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener" class="skill-chip p-2 rounded-lg" title="HTML5"><img src="https://img.icons8.com/color/24/000000/html-5.png" alt="HTML5" class="w-5 h-5"></a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener" class="skill-chip p-2 rounded-lg" title="CSS3"><img src="https://img.icons8.com/color/24/000000/css3.png" alt="CSS3" class="w-5 h-5"></a>
+        <a href="https://www.php.net/" target="_blank" rel="noopener" class="skill-chip p-2 rounded-lg" title="PHP"><img src="https://img.icons8.com/officel/24/000000/php-logo.png" alt="PHP" class="w-5 h-5"></a>
+        <a href="https://www.mysql.com/" target="_blank" rel="noopener" class="skill-chip p-2 rounded-lg" title="MySQL"><img src="https://img.icons8.com/color/24/000000/mysql-logo.png" alt="MySQL" class="w-5 h-5"></a>
+        <a href="https://www.adobe.com/products/photoshop.html" target="_blank" rel="noopener" class="skill-chip p-2 rounded-lg" title="Photoshop"><img src="https://img.icons8.com/color/24/000000/adobe-photoshop.png" alt="Photoshop" class="w-5 h-5"></a>
+        <a href="https://www.canva.com/" target="_blank" rel="noopener" class="skill-chip p-2 rounded-lg" title="Canva"><img src="https://img.icons8.com/color/24/000000/canva.png" alt="Canva" class="w-5 h-5"></a>
+      </div>
+
+      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <a href="rosanno.lumubos.pdf" download class="px-6 py-3 rounded-lg bg-gold text-ink font-semibold flex items-center justify-center gap-2 btn-hover">
+          <img src="https://img.icons8.com/ios-filled/24/0B0F16/resume.png" alt="" class="w-5 h-5">
+          Download Resume
+        </a>
+        <button onclick="scrollToSection('contact')" class="px-6 py-3 rounded-lg border border-line text-white font-semibold flex items-center justify-center gap-2 hover:border-gold btn-hover">
+          <img src="https://img.icons8.com/ios-filled/24/F5B942/contacts.png" alt="" class="w-5 h-5">
+          Contact Me
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Certifications -->
+<section id="certifications" class="py-24 bg-ink">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <p class="font-mono text-cyan text-xs uppercase tracking-widest mb-3">Credentials</p>
+    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Certifications</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12 max-w-3xl mx-auto">
+      <div class="p-7 bg-panel rounded-xl border border-line card-hover text-left flex items-start gap-4">
+        <img src="https://img.icons8.com/color/48/000000/azure-1.png" alt="Microsoft Azure" class="w-12 h-12 shrink-0">
+        <div>
+          <p class="font-mono text-xs text-cyan">AZ-900</p>
+          <h3 class="font-display text-lg font-bold text-white mt-1">Microsoft Certified: Azure Fundamentals</h3>
+          <p class="text-muted text-sm mt-2">Core cloud concepts, Azure services, security, and pricing.</p>
+        </div>
+      </div>
+      <div class="p-7 bg-panel rounded-xl border border-line card-hover text-left flex items-start gap-4">
+        <img src="https://img.icons8.com/color/48/000000/azure-1.png" alt="Microsoft Azure" class="w-12 h-12 shrink-0">
+        <div>
+          <p class="font-mono text-xs text-cyan">AZ-305</p>
+          <h3 class="font-display text-lg font-bold text-white mt-1">Microsoft Certified: Azure Solutions Architect Expert</h3>
+          <p class="text-muted text-sm mt-2">Designing infrastructure, network, storage, and security solutions on Azure.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Core Expertise -->
+<section id="expertise" class="py-24 bg-panel border-t border-line">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <p class="font-mono text-cyan text-xs uppercase tracking-widest mb-3">Core Expertise</p>
+    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Where I Add the Most Value</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 text-left">
+      <div class="p-6 bg-ink rounded-xl border border-line">
+        <h3 class="font-display text-base font-bold text-gold mb-4">Network &amp; Security</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-slate-200">Network Administration</span>
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-slate-200">Firewall Config</span>
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-slate-200">Sophos</span>
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-slate-200">pfSense</span>
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-slate-200">Switches</span>
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-slate-200">Ruijie</span>
+        </div>
+      </div>
+      <div class="p-6 bg-ink rounded-xl border border-line">
+        <h3 class="font-display text-base font-bold text-gold mb-4">Surveillance &amp; Communications</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-slate-200">CCTV Systems</span>
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-slate-200">Intercom Systems</span>
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-slate-200">Grandstream / VOIP</span>
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-slate-200">System Configuration</span>
+        </div>
+      </div>
+      <div class="p-6 bg-ink rounded-xl border border-line">
+        <h3 class="font-display text-base font-bold text-gold mb-4">Leadership &amp; Operations</h3>
+        <div class="flex flex-wrap gap-2">
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-slate-200">People Management</span>
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-slate-200">Team Leadership</span>
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-slate-200">Documentation &amp; SOPs</span>
+          <span class="pill px-3 py-1.5 rounded-full text-sm text-slate-200">Vendor Coordination</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience Timeline -->
+<section id="experience" class="py-24 bg-ink border-t border-line">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <p class="font-mono text-cyan text-xs uppercase tracking-widest mb-3">Career Path</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Experience</h2>
+      <p class="mt-3 text-muted">Most recent role first.</p>
+    </div>
+
+    <div class="relative pl-8 sm:pl-10">
+      <div class="absolute left-3 sm:left-4 top-2 bottom-2 w-px timeline-line"></div>
+
+      <!-- LIME Hotel and Resort El Nido - PRESENT, FIRST -->
+      <div class="relative mb-10">
+        <span class="absolute -left-[22px] sm:-left-[26px] top-2 w-3.5 h-3.5 rounded-full bg-cyan text-cyan timeline-dot"></span>
+        <div class="bg-panel rounded-xl border border-cyan/40 overflow-hidden card-hover">
+          <div class="relative">
+            <img src="LIME.jpg" alt="LIME Hotel and Resort El Nido" class="w-full h-48 sm:h-56 object-cover">
+            <span class="present-badge absolute top-3 right-3 px-3 py-1 rounded-full text-cyan text-xs font-mono border border-cyan/40 backdrop-blur-sm">● Present</span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-lg font-bold text-white">LIME Hotel and Resort, El Nido</h3>
+            <p class="font-mono text-xs text-cyan mt-1">IT Supervisor</p>
+            <p class="text-muted text-sm mt-2">March 25, 2026 to Present</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accenture -->
+      <div class="relative mb-10">
+        <span class="absolute -left-[22px] sm:-left-[26px] top-2 w-3.5 h-3.5 rounded-full bg-gold text-gold timeline-dot"></span>
+        <div class="bg-panel rounded-xl border border-line overflow-hidden card-hover">
+          <img src="accenture.webp" alt="Accenture Philippines" class="w-full h-48 sm:h-56 object-cover">
+          <div class="p-5">
+            <h3 class="font-display text-lg font-bold text-white">Accenture Philippines</h3>
+            <p class="font-mono text-xs text-cyan mt-1">App/Cloud Analyst</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delta P -->
+      <div class="relative mb-10">
+        <span class="absolute -left-[22px] sm:-left-[26px] top-2 w-3.5 h-3.5 rounded-full bg-gold text-gold timeline-dot"></span>
+        <div class="bg-panel rounded-xl border border-line overflow-hidden card-hover">
+          <img src="deltap.jpg" alt="Delta P, Inc. Power Plant" class="w-full h-48 sm:h-56 object-cover">
+          <div class="p-5">
+            <h3 class="font-display text-lg font-bold text-white">Delta P, Inc. Power Plant</h3>
+            <p class="font-mono text-xs text-cyan mt-1">IT Consultant</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sunlight Hotels -->
+      <div class="relative mb-10">
+        <span class="absolute -left-[22px] sm:-left-[26px] top-2 w-3.5 h-3.5 rounded-full bg-gold text-gold timeline-dot"></span>
+        <div class="bg-panel rounded-xl border border-line overflow-hidden card-hover">
+          <img src="sunlighthotelsandresorts.jpg" alt="Sunlight Hotels & Resorts" class="w-full h-48 sm:h-56 object-cover">
+          <div class="p-5">
+            <h3 class="font-display text-lg font-bold text-white">Sunlight Hotels &amp; Resorts</h3>
+            <p class="font-mono text-xs text-cyan mt-1">IT Supervisor</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sheridan -->
+      <div class="relative">
+        <span class="absolute -left-[22px] sm:-left-[26px] top-2 w-3.5 h-3.5 rounded-full bg-gold text-gold timeline-dot"></span>
+        <div class="bg-panel rounded-xl border border-line overflow-hidden card-hover">
+          <img src="sheridan.jpg" alt="Sheridan" class="w-full h-48 sm:h-56 object-cover">
+          <div class="p-5">
+            <h3 class="font-display text-lg font-bold text-white">Sheridan</h3>
+            <p class="font-mono text-xs text-cyan mt-1">IT Assistant</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services" class="py-24 bg-panel border-t border-line">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <p class="font-mono text-cyan text-xs uppercase tracking-widest mb-3">What I Do</p>
+    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Services</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12 text-left">
+      <div class="p-8 bg-ink rounded-xl border border-line card-hover">
+        <img src="https://img.icons8.com/ios-filled/40/F5B942/network.png" alt="" class="mb-5 w-10 h-10">
+        <h3 class="font-display text-xl font-bold text-white">Network &amp; Infrastructure</h3>
+        <p class="mt-3 text-muted leading-relaxed">Firewall and switch configuration, network administration, and infrastructure troubleshooting across multi-site properties.</p>
+      </div>
+      <div class="p-8 bg-ink rounded-xl border border-line card-hover">
+        <img src="https://img.icons8.com/ios-filled/40/F5B942/conference-call.png" alt="" class="mb-5 w-10 h-10">
+        <h3 class="font-display text-xl font-bold text-white">IT Team Leadership</h3>
+        <p class="mt-3 text-muted leading-relaxed">Supervising IT staff, coordinating vendors, and setting the standards that keep an IT department running well.</p>
+      </div>
+      <div class="p-8 bg-ink rounded-xl border border-line card-hover">
+        <img src="https://img.icons8.com/ios-filled/40/F5B942/cctv-camera.png" alt="" class="mb-5 w-10 h-10">
+        <h3 class="font-display text-xl font-bold text-white">Security &amp; Surveillance</h3>
+        <p class="mt-3 text-muted leading-relaxed">CCTV, intercom, and VOIP system setup and maintenance, built around reliability and clear access control.</p>
+      </div>
+      <div class="p-8 bg-ink rounded-xl border border-line card-hover">
+        <img src="https://img.icons8.com/ios-filled/40/F5B942/document.png" alt="" class="mb-5 w-10 h-10">
+        <h3 class="font-display text-xl font-bold text-white">Documentation &amp; SOPs</h3>
+        <p class="mt-3 text-muted leading-relaxed">Clear, maintainable IT documentation and standard operating procedures that make handovers painless.</p>
+      </div>
+    </div>
+    <p class="mt-8 text-sm text-muted">Also available for light web &amp; backend support on request.</p>
+  </div>
+</section>
+
+<!-- Development Side Projects (low-key) -->
+<section id="dev-projects" class="py-14 bg-ink border-t border-line">
+  <div class="max-w-6xl mx-auto px-6">
+    <p class="text-center text-xs text-muted uppercase tracking-widest font-mono mb-6">On the side: a few backend/web builds</p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div class="flex items-center gap-3 p-3 bg-panel rounded-lg border border-line">
+        <img src="kiefers.jpg" alt="Kiefer's Delivery App" class="w-14 h-14 rounded-md object-cover shrink-0">
+        <div>
+          <p class="text-sm text-slate-200 font-medium">Kiefer's Delivery App</p>
+          <p class="text-xs text-muted">Backend Developer</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 p-3 bg-panel rounded-lg border border-line">
+        <img src="tara.jpg" alt="Tara Rides" class="w-14 h-14 rounded-md object-cover shrink-0">
+        <div>
+          <p class="text-sm text-slate-200 font-medium">Tara Rides</p>
+          <p class="text-xs text-muted">Backend Developer</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 p-3 bg-panel rounded-lg border border-line">
+        <img src="food.png" alt="Food Ohh" class="w-14 h-14 rounded-md object-cover shrink-0">
+        <div>
+          <p class="text-sm text-slate-200 font-medium">Food Ohh</p>
+          <p class="text-xs text-muted">Backend Developer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-24 bg-ink border-t border-line">
+  <div class="max-w-xl mx-auto px-6 text-center">
+    <p class="font-mono text-cyan text-xs uppercase tracking-widest mb-3">Let's Connect</p>
+    <h2 class="font-display text-3xl sm:text-4xl font-bold text-white">Contact</h2>
+    <p class="mt-4 text-muted">Reach out for inquiries, collaborations, or just to say hi.</p>
+
+    <form class="mt-10 space-y-4 text-left" action="https://formsubmit.co/rosanno.lumubos20@gmail.com" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required
+        class="w-full px-4 py-3 rounded-lg bg-panel border border-line text-white placeholder-muted focus:border-gold outline-none transition-colors">
+      <input type="email" name="email" placeholder="Your Email" required
+        class="w-full px-4 py-3 rounded-lg bg-panel border border-line text-white placeholder-muted focus:border-gold outline-none transition-colors">
+      <textarea name="message" placeholder="Your Message" rows="4" required
+        class="w-full px-4 py-3 rounded-lg bg-panel border border-line text-white placeholder-muted focus:border-gold outline-none transition-colors"></textarea>
+      <input type="hidden" name="_captcha" value="false">
+      <button type="submit" class="w-full px-6 py-3 rounded-lg bg-gold text-ink font-bold flex items-center justify-center gap-2 btn-hover">
+        <img src="https://img.icons8.com/ios-filled/24/0B0F16/send-letter.png" alt="">
+        Send Message
+      </button>
+    </form>
+
+    <div class="mt-10 flex justify-center space-x-6">
+      <a href="mailto:rosanno.lumubos20@gmail.com" target="_blank" rel="noopener" class="text-muted hover:text-gold transition-colors hover:-translate-y-1 transform duration-300">
+        <img src="https://img.icons8.com/color/40/000000/gmail-new.png" alt="Gmail" class="w-10 h-10">
+      </a>
+      <a href="https://www.facebook.com/your-profile" target="_blank" rel="noopener" class="text-muted hover:text-gold transition-colors hover:-translate-y-1 transform duration-300">
+        <img src="https://img.icons8.com/color/40/000000/facebook-new.png" alt="Facebook" class="w-10 h-10">
+      </a>
+      <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener" class="text-muted hover:text-gold transition-colors hover:-translate-y-1 transform duration-300">
+        <img src="https://img.icons8.com/color/40/000000/linkedin.png" alt="LinkedIn" class="w-10 h-10">
+      </a>
+    </div>
+
+    <p class="mt-12 text-xs text-muted font-mono">© 2026 Rosanno "Sonny" Lumubos. Built with care.</p>
+  </div>
+</section>
+
+<!-- Back to Top -->
+<button id="backToTop" onclick="scrollToSection('home')" class="px-4 py-3 bg-gold text-ink rounded-full shadow-lg hover:bg-golddark btn-hover font-semibold">
+  ↑
+</button>
+<script>
+  window.addEventListener('scroll', () => {
+    const backToTop = document.getElementById('backToTop');
+    backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+  });
+</script>
 
 </body>
 </html>
